@@ -4,13 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class evento extends JFrame {
+public class EventoView extends JFrame { // Renomeado de 'evento' para 'EventoView'
 
     private JLabel nomeLabel;
     private JTextField nomeTextField;
     private JButton atualizarButton;
 
-    public evento() {
+    public EventoView() { // Construtor renomeado
         super("Aplicação MVC de Usuário");
 
         // Configurações da janela

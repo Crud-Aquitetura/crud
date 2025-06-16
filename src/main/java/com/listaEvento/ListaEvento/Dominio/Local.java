@@ -1,35 +1,51 @@
 package com.listaEvento.ListaEvento.Dominio;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Local {
 
-    private int id;
+    private Long id;
     private String nome;
+    private String descricao; // Adicionado para ser consistente com LocalModel e LocalController
+    private BigDecimal preco; // Adicionado
     private String cep;
     private int capacidade;
-    private String descricao;
-    private String imagem_url;
-    private LocalDate data_cadastro;
+    private String imagemUrl; // Renomeado
+    private LocalDate dataCadastro; // Renomeado
 
     // Construtor completo
-    public Local(int id, String nome, String cep, int capacidade, String descricao, String imagem_url, LocalDate data_cadastro) {
+    public Local(Long id, String nome, String descricao, BigDecimal preco, String cep, int capacidade, String imagemUrl, LocalDate dataCadastro) {
         this.id = id;
         this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
         this.cep = cep;
         this.capacidade = capacidade;
-        this.descricao = descricao;
-        this.imagem_url = imagem_url;
-        this.data_cadastro = data_cadastro;
+        this.imagemUrl = imagemUrl;
+        this.dataCadastro = dataCadastro;
+    }
+
+    // Construtor sem ID para criação de novos locais (o ID será gerado)
+    public Local(String nome, String descricao, BigDecimal preco, String cep, int capacidade, String imagemUrl, LocalDate dataCadastro) {
+        this(null, nome, descricao, preco, cep, capacidade, imagemUrl, dataCadastro);
     }
 
     // Getters
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
     }
 
     public String getCep() {
@@ -40,25 +56,29 @@ public class Local {
         return capacidade;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getImagemUrl() {
+        return imagemUrl;
     }
 
-    public String getImagem_url() {
-        return imagem_url;
-    }
-
-    public LocalDate getData_cadastro() {
-        return data_cadastro;
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
     }
 
     // Setters
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
     }
 
     public void setCep(String cep) {
@@ -69,16 +89,12 @@ public class Local {
         this.capacidade = capacidade;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
     }
 
-    public void setImagem_url(String imagem_url) {
-        this.imagem_url = imagem_url;
-    }
-
-    public void setData_cadastro(LocalDate data_cadastro) {
-        this.data_cadastro = data_cadastro;
+    public void setDataCadastro(LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     @Override
@@ -86,11 +102,12 @@ public class Local {
         return "Local{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", preco=" + preco +
                 ", cep='" + cep + '\'' +
                 ", capacidade=" + capacidade +
-                ", descricao='" + descricao + '\'' +
-                ", imagem_url='" + imagem_url + '\'' +
-                ", data_cadastro=" + data_cadastro +
+                ", imagemUrl='" + imagemUrl + '\'' +
+                ", dataCadastro=" + dataCadastro +
                 '}';
     }
 }

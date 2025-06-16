@@ -1,61 +1,55 @@
 package com.listaEvento.ListaEvento.Controller;
 
 import com.listaEvento.ListaEvento.Dominio.Local;
-import org.springframework.stereotype.Service;
+import com.listaEvento.ListaEvento.Model.LocalModel; // Importa o LocalModel
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
 
-@Service
+@RestController // Anotação correta para um controlador REST
+@RequestMapping("/locais") // Define o caminho base para este controlador
+@CrossOrigin("*") // Permite requisições de qualquer origem (para desenvolvimento)
 public class LocalController {
 
-    private final List<Local> locais = new ArrayList<>();
-    private final AtomicLong counter = new AtomicLong(); // Para gerar IDs simulados
+    @Autowired // Injeta a dependência do LocalModel
+    private LocalModel localModel;
 
-    public LocalController() {
-        // Exemplo fictício de locais, substitua conforme seu modelo real
-        locais.add(new Local(counter.incrementAndGet(), "Local A", "Auditório grande", new BigDecimal("1200.00"), "12345-678", 100, "url1.jpg", "2024-01-01"));
-        locais.add(new Local(counter.incrementAndGet(), "Local B", "Sala de reunião", new BigDecimal("500.00"), "23456-789", 20, "url2.jpg", "2024-02-01"));
-        locais.add(new Local(counter.incrementAndGet(), "Local C", "Espaço aberto", new BigDecimal("800.00"), "34567-890", 200, "url3.jpg", "2024-03-01"));
+    @GetMapping
+    public ResponseEntity<List<Local>> listarLocais() {
+        return ResponseEntity.ok(localModel.findAll());
     }
 
-    public List<Local> findAll() {
-        return new ArrayList<>(locais);
+    @GetMapping("/{id}")
+    public ResponseEntity<Local> buscarPorId(@PathVariable Long id) {
+        Optional<Local> local = localModel.findById(id);
+        return local.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    public Optional<Local> findById(Long id) {
-        return locais.stream()
-                .filter(p -> p.getId().equals(id))
-                .findFirst();
+    @PostMapping
+    public ResponseEntity<Local> criarLocal(@RequestBody Local local) {
+        Local criado = localModel.save(local);
+        return ResponseEntity.ok(criado);
     }
 
-    public Local save(Local local) {
-        if (local.getId() == null) {
-            local.setId(counter.incrementAndGet());
-        } else {
-            locais.removeIf(p -> p.getId().equals(local.getId()));
+    @PutMapping("/{id}")
+    public ResponseEntity<Local> atualizarLocal(@PathVariable Long id, @RequestBody Local local) {
+        Local atualizado = localModel.update(id, local);
+        if (atualizado == null) {
+            return ResponseEntity.notFound().build();
         }
-        locais.add(local);
-        return local;
+        return ResponseEntity.ok(atualizado);
     }
 
-    public Local update(Long id, Local localAtualizado) {
-        return findById(id).map(localExistente -> {
-            localExistente.setNome(localAtualizado.getNome());
-            localExistente.setDescricao(localAtualizado.getDescricao());
-            localExistente.setPreco(localAtualizado.getPreco());
-            localExistente.setCep(localAtualizado.getCep());
-            localExistente.setCapacidade(localAtualizado.getCapacidade());
-            localExistente.setImagemUrl(localAtualizado.getImagemUrl());
-            localExistente.setDataCadastro(localAtualizado.getDataCadastro());
-            return localExistente;
-        }).orElse(null);
-    }
-
-    public boolean deleteById(Long id) {
-        return locais.removeIf(local -> local.getId().equals(id));
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarLocal(@PathVariable Long id) {
+        boolean removido = localModel.deleteById(id);
+        if (!removido) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.noContent().build();
     }
 }

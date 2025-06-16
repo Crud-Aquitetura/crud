@@ -1,12 +1,10 @@
-
 package com.listaEvento.ListaEvento.Model;
 
-import com.example.demo.model.Produto;
-import com.listaEvento.ListaEvento.View.local;
-import jdk.vm.ci.meta.Local;
+import com.listaEvento.ListaEvento.Dominio.Local; // Importação corrigida
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,10 +17,10 @@ public class LocalModel {
     private final AtomicLong counter = new AtomicLong(); // Para gerar IDs simulados
 
     public LocalModel() {
-        // Adiciona alguns produtos de exemplo ao iniciar
-        locais.add(new Local(counter.incrementAndGet(), "Notebook Dell", "Core i7, 16GB RAM", new BigDecimal("5500.00")));
-        locais.add(new Local(counter.incrementAndGet(), "Mouse Gamer", "RGB, 10000 DPI", new BigDecimal("150.00")));
-        locais.add(new Local(counter.incrementAndGet(), "Teclado Mecânico", "Switch Brown", new BigDecimal("300.00")));
+        // Adiciona alguns locais de exemplo ao iniciar
+        locais.add(new Local(counter.incrementAndGet(), "Auditório Principal", "Um grande auditório para eventos", new BigDecimal("1200.00"), "12345-678", 500, "http://exemplo.com/auditorio1.jpg", LocalDate.of(2024, 1, 15)));
+        locais.add(new Local(counter.incrementAndGet(), "Sala de Convenções", "Sala equipada para conferências", new BigDecimal("750.00"), "23456-789", 100, "http://exemplo.com/sala2.jpg", LocalDate.of(2024, 2, 20)));
+        locais.add(new Local(counter.incrementAndGet(), "Espaço Aberto Park", "Área externa para grandes eventos", new BigDecimal("2000.00"), "34567-890", 1000, "http://exemplo.com/park3.jpg", LocalDate.of(2024, 3, 10)));
     }
 
     public List<Local> findAll() {
@@ -46,9 +44,8 @@ public class LocalModel {
         return local;
     }
 
-    public local update(Long id, Local localAtualizado) {
+    public Local update(Long id, Local localAtualizado) {
         return findById(id).map(localExistente -> {
-            localExistente.SetId(localExistente.getId());
             localExistente.setNome(localAtualizado.getNome());
             localExistente.setDescricao(localAtualizado.getDescricao());
             localExistente.setPreco(localAtualizado.getPreco());
