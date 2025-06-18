@@ -1,28 +1,37 @@
 
 # Crud
 
-Projeto desenvolvido para ser usado como trabalho de arquitetura de software, cujo apresenta um CRUD.
+Projeto desenvolvido para a disciplina de Arquitetura de Software, cujo apresenta um CRUD.
+Realizado com base no padrão Model, View e Controller, permitindo separação de responsabilidades. Integração com Postgres para persistência estruturada. A comunicação se dá através de um API Gateway.
 
 ### Tech Stack
 
 [![My Skills](https://skillicons.dev/icons?i=ts,js,java,html)](https://skillicons.dev)
 
-#### Conteúdo
+#### Conteúdo e autorias
 
-###### Front-end
+###### Front-end: Luiza e João Pedro
 
-###### API-Gateway
+###### API-Gateway: Eduardo
 
-###### Insert
+###### Insert: Leonardo
 
-###### Select
+###### Select: Gabriel
 
-###### Delete
+###### Delete: Davi Rodrigues
 
-###### Banco de Dados
+###### Banco de Dados: Francisco
 
-###### Update
+###### Update: Hugo
 
+###### Atualização do CRUD: Vicente
+
+##### README: João Pedro e Hugo
+
+##### Cenários de Sucesso
+Ocorre o preenchimento de informações (local, evento, usuário). A requisição é realizada e, posteriormente, é possível realizar leitura, edição e exclusão dos dados.
+##### Cenários de Falha
+Falhas na conexão com o banco de dados, serviço offline ou métodos sem resultado.
 
 #### Colaboradores
 
@@ -34,3 +43,4 @@ Projeto desenvolvido para ser usado como trabalho de arquitetura de software, cu
 - Luiza Oliveira de Almeida Guimarães – 22353259 
 - Vicente Augusto - 22304720 
 - Hugo Vilela Carneiro - 22352834
+- Davi Rodrigues de Sousa Barros - 22353306
