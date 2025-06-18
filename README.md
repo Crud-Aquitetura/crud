@@ -11,8 +11,6 @@ Projeto desenvolvido para ser usado como trabalho de arquitetura de software, cu
 
 ###### Front-end
 
-###### Crud
-
 ###### API-Gateway
 
 ###### Insert
