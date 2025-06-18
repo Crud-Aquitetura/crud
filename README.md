@@ -2,7 +2,7 @@
 # CRUD
 
 Projeto desenvolvido para a disciplina de Arquitetura de Software, cujo apresenta um CRUD.
-Realizado com base no padrão Model, View e Controller, permitindo separação de responsabilidades. Integração com Postgres para persistência estruturada. A comunicação se dá através de um API Gateway.
+Realizado com base no padrão Model, View e Controller, permitindo separação de responsabilidades. Integração com Postgres para persistência estruturada. A comunicação se dá por meio de um API Gateway.
 
 ### Tech Stack
 
