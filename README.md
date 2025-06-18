@@ -6,7 +6,10 @@ Realizado com base no padrão Model, View e Controller, permitindo separação d
 
 ### Tech Stack
 
-[![My Skills](https://skillicons.dev/icons?i=ts,js,java,html)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=ts,js,java,nodejs,html,postgres)](https://skillicons.dev)
+
+##### Diagrama simplificado
+![6YUHyys](https://github.com/user-attachments/assets/12f86c81-f8fc-497f-8f81-cbe23b66bcf1)
 
 #### Conteúdo e autorias
 
