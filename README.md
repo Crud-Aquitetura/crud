@@ -26,7 +26,7 @@ Realizado com base no padrão Model, View e Controller, permitindo separação d
 
 ###### Atualização do CRUD: Vicente
 
-##### README: João Pedro e Hugo
+###### README: João Pedro e Hugo
 
 ##### Cenários de Sucesso
 Ocorre o preenchimento de informações (local, evento, usuário). A requisição é realizada e, posteriormente, é possível realizar leitura, edição e exclusão dos dados.
